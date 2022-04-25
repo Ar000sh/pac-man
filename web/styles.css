@@ -24,14 +24,14 @@ html, body {
     width: 60px;
     height: 60px;
     color: black;
-    background: lightgrey;
+    background: darkgray;
     text-align: center;
     font-weight: bold;
 }
 
 #chess tr:nth-child(odd) td:nth-child(odd),
 #chess tr:nth-child(even) td:nth-child(even) {
-    background: darkgray;
+    background: lightgrey ;
 }
 
 #chess tr:first-child td, #chess tr td:first-child {
