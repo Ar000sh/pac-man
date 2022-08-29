@@ -1,21 +1,38 @@
+import 'dart:async';
 import 'dart:html';
+import 'package:demo/pacman.dart';
+
 
 void main() {
   querySelector('#output')?.text = 'Hooray, your first barebones Dart app is running!';
-  // White
-querySelectorAll('#chess tr:nth-child(8) td:nth-child(n+2)').forEach((td) { td.innerHtml = "&#9817;"; });
-querySelectorAll('#chess tr:nth-child(9) td:nth-child(2), #chess tr:nth-child(9) td:nth-child(9)').forEach((td) { td.innerHtml = "&#9814;"; });
-querySelectorAll('#chess tr:nth-child(9) td:nth-child(3), #chess tr:nth-child(9) td:nth-child(8)').forEach((td) { td.innerHtml = "&#9816;"; });
-querySelectorAll('#chess tr:nth-child(9) td:nth-child(4), #chess tr:nth-child(9) td:nth-child(7)').forEach((td) { td.innerHtml = "&#9815;"; });
-querySelector('#chess tr:nth-child(9) td:nth-child(5)')?.innerHtml = "&#9812;";
-querySelector('#chess tr:nth-child(9) td:nth-child(6)')?.innerHtml = "&#9813;";
 
-// Black
-querySelectorAll('#chess tr:nth-child(3) td:nth-child(n+2)').forEach((td) { td.innerHtml = "&#9823;"; });
-querySelectorAll('#chess tr:nth-child(2) td:nth-child(2), #chess tr:nth-child(2) td:nth-child(9)').forEach((td) { td.innerHtml = "&#9820;"; });
-querySelectorAll('#chess tr:nth-child(2) td:nth-child(3), #chess tr:nth-child(2) td:nth-child(8)').forEach((td) { td.innerHtml = "&#9822;"; });
-querySelectorAll('#chess tr:nth-child(2) td:nth-child(4), #chess tr:nth-child(2) td:nth-child(7)').forEach((td) { td.innerHtml = "&#9821;"; });
-querySelector('#chess tr:nth-child(2) td:nth-child(6)').innerHtml = "&#9819;";
-querySelector('#chess tr:nth-child(2) td:nth-child(5)').innerHtml = "&#9818;";
+  List<List<String>> map4;
+  map4 = [
+  ['<','-','-','-','-','-','-','-','-','5','-','-','-','-','-','-','-','-','>'],
+  ['|','*','*','p','*','*','*','*','*','|','*','*','*','*','*','*','*','*','|'],
+  ['|','*','<','>','*','<','-','>','*','|','*','<','-','>','*','<','>','*','|'],
+  ['|','*','0','/','*','0','-','/','*','u','*','0','-','/','*','0','/','*','|'],
+  ['|','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','|'],
+  ['|','*','[',']','*','N','*','[','-','5','-',']','*','N','*','[',']','*','|'],
+  ['|','*','*','*','*','|','*','*','*','|','*','*','*','|','*','*','*','*','|'],
+  ['0','-','-','>','*','1','-',']',' ','u',' ','[','-','2','*','<','-','-','/'],
+  [' ',' ',' ','|','*','|',' ',' ',' ',' ',' ',' ',' ','|','*','|',' ',' ',' '],
+  ['-','-','-','/','*','u',' ','<','-','-','-','>',' ','u','*','0','-','-','-'],
+  ['g',' ',' ','b','*',' ',' ','|',' ',' ',' ','|',' ',' ','*','b',' ',' ','g'],
+  ['-','-','-','>','*','N',' ','0','-','-','-','/',' ','N','*','<','-','-','-'],
+  [' ',' ',' ','|','*','|',' ',' ',' ',' ',' ',' ',' ','|','*','|',' ',' ',' '],
+  ['<','-','-','/','*','u',' ','[','-','5','-',']',' ','u','*','0','-','-','>'],
+  ['|','*','*','*','*','*','*','*','*','|','*','*','*','*','*','*','*','*','|'],
+  ['|','*','[','>','*','[','-',']','*','u','*','[','-',']','*','<',']','*','|'],
+  ['|','*','*','|','*','*','*','*','*','*','*','*','*','*','*','|','*','*','|'],
+  ['1',']','*','u','*','N','*','[','-','5','-',']','*','N','*','u','*','[','2'],
+  ['|','*','*','*','*','|','*','*','*','|','*','*','*','|','*','*','*','*','|'],
+  ['|','*','[','-','-','w','-',']','*','u','*','[','-','w','-','-',']','*','|'],
+  ['|','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','|'],
+  ['0','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','/']
+  ];
+
+  Controller c = Controller();
+  // Timer.periodic(Duration(milliseconds: 50), c.gameloop,);
 
 }

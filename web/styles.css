@@ -13,30 +13,261 @@ html, body {
   text-align: center;
 }
 
-#chess {
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
+body {
+  background: black;
+  margin: 0px;
+  padding: 10px 200px
 }
 
-#chess td {
-    font-size: 40px;
-    width: 60px;
-    height: 60px;
-    color: black;
-    background: darkgray;
-    text-align: center;
-    font-weight: bold;
+#score {
+  /* margin-top: 10%; */
+  margin-left: 31%;
+
+  color: white;
+  font-family: sans-serif;
+  font-size: 14;
+  margin-bottom: 0px;
+}
+#HighscoreEl {
+  margin-right: 40px;
+
+  color: white;
+  font-family: sans-serif;
+  font-size: 14;
+  margin-bottom: 0px;
+}
+#start {
+  width: 70px;
+  padding: 5px 20px 5px 20px;
+  margin-top: 10%;
+  margin-left: 36%;
+  margin-bottom: 40px;
+
+  font-style: normal;
+  font-size: 2rem;
+  text-decoration: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.5);
+  border: 3px solid white;
+  border-radius: 5px;
+}
+#scoreEl {
+  
+  margin-right: 40px;
+}
+#canvas {
+
+  padding: 0px 0px 0px 0px;
 }
 
-#chess tr:nth-child(odd) td:nth-child(odd),
-#chess tr:nth-child(even) td:nth-child(even) {
-    background: lightgrey ;
+
+#field {
+  /* Groesse */
+  width: 380px;
+  height: 440px;
+  /* margin-top: 10%; */
+  margin-bottom: 10%;
+  /* margin-top: 10%; */
+  margin-left: 30%;
+  /* margin-left: auto; */
+  margin-right: auto;
+
+ 
+  
+  /* Positionierung */
+  position: relative;
+   /* Styling */
+   /* padding: 2em; */
+
+}
+#pacmanwrapper {
+  /* Groesse und Form */
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  
+  /* Aussehen */
+  /* background: dodgerblue; */
+  
+  /* Positionierung */ 
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.pacmanlives {
+  /* Groesse und Form */
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  
+  /* Aussehen */
+  background: url(img/pacman//life.png);
+  
+  /* Positionierung */ 
+  position: absolute;
+  top: 450px;
+  
+}
+#ghost {
+  /* Groesse und Form */
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  
+  /* Aussehen */
+  background: dodgerblue;
+  
+  /* Positionierung */ 
+  position: absolute;
+
+}
+.ghostbody {
+  /* Groesse und Form */
+  width: 24px;
+  height: 24px;
+  
+  /* Aussehen */
+  /* background: dodgerblue; */
+  
+  /* Positionierung */ 
+  position: absolute;
+
+}
+.collectibles {
+  /* Groesse und Form */
+  width: 20px;
+  height: 20px;
+  border-radius: 8px;
+  /* Aussehen */
+  /* background: dodgerblue; */
+  
+  /* Positionierung */ 
+  position: absolute;
+
+}
+.ghosteyes {
+  /* Groesse und Form */
+  width: 24px;
+  height: 24px;
+  /* border-radius: 8px; */
+  
+  /* Aussehen */
+  /* background: dodgerblue; */
+  
+  /* Positionierung */ 
+  position: absolute;
+
+}
+#block {
+  /* Groesse und Form */
+  width: 20px;
+  height: 20px;
+  /* border-radius: 50px; */
+  
+  /* Aussehen */
+  background: url(img/block.png);
+  /* background-image: image("img/block.png"); */
+  
+  /* Positionierung */ 
+  position: absolute;
+
+}
+.boundary {
+  /* Groesse und Form */
+  width: 20px;
+  height: 20px;
+  /* border-radius: 50px; */
+  
+  /* Aussehen */
+  background: url(img/block.png);
+  /* background-image: image("img/block.png"); */
+  
+  /* Positionierung */ 
+  position: absolute;
+
+}
+#capLeft {
+  /* Groesse und Form */
+  width: 20px;
+  height: 20px;
+  /* border-radius: 50px; */
+  
+  /* Aussehen */
+  background: url(img/wall_ml.png);
+  /* background-image: image("img/block.png"); */
+  
+  /* Positionierung */ 
+  position: absolute;
+
+}
+#capRight {
+  /* Groesse und Form */
+  width: 20px;
+  height: 20px;
+  /* border-radius: 50px; */
+  
+  /* Aussehen */
+  background: url(img/wall_mr.png);
+  /* background-image: image("img/block.png"); */
+  
+  /* Positionierung */ 
+  position: absolute;
+
+}
+#blinky {
+  /* Groesse und Form */
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  
+  /* Aussehen */
+  background: dodgerblue;
+  
+  /* Positionierung */ 
+  position: absolute;
+  top: 100px;
+  left: 100px;
 }
 
-#chess tr:first-child td, #chess tr td:first-child {
-    background: white !important;
-    text-align: center;
-    font-size: 20px;
+#blinky {
+  /* Groesse und Form */
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  
+  /* Aussehen */
+  background: dodgerblue;
+  
+  /* Positionierung */ 
+  position: absolute;
+  top: 100px;
+  left: 100px;
 }
-
+#blinky {
+  /* Groesse und Form */
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  
+  /* Aussehen */
+  background: dodgerblue;
+  
+  /* Positionierung */ 
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+#blinky {
+  /* Groesse und Form */
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  
+  /* Aussehen */
+  background: dodgerblue;
+  
+  /* Positionierung */ 
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}

@@ -15,17 +15,87 @@
 <body>
   
   <div id="output"></div>
-  <table id="chess">
-    <tr><td></td><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td></tr>
-    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-</table>
+  <div id="start">start</div>
+  <p id="score">
+    <span>Score: </span>
+    <span id="scoreEl">0</span>
+    <span>Highscore: </span>
+    <span id="HighscoreEl">0</span>
+    <span>Level: </span>
+    <span id="levelEl">0</span>
+  </p>
+  <div id="game">
+    <span>
+      <div style="display:none;">
+
+        <img id="block" src="img/block.png">
+        <img id="capLeft" src="img/wall_ml.png">
+        <img id="capRight" src="img/wall_mr.png">
+        <img id="pipeConnectorBottom" src="img/wall_mt.png">
+        <img id="pipeCorner1" src="img/wall_tlc.png">
+        <img id="pipeCorner2" src="img/wall_trc.png">
+        <img id="pipeCorner3" src="img/wall_brc.png">
+        <img id="pipeCorner4" src="img/wall_blc.png">
+        <img id="pipeHorizontal" src="img/wall_h.png">
+        <img id="pipeVertical" src="img/wall_v.png">
+        <img id="u-wall" src="img/wall_b.png">
+        <img id="r-wall" src="img/wall_r.png">
+        <img id="l-wall" src="img/wall_l.png"> 
+        <img id="w-wall" src="img/wall_mb.png">
+        <img id="n-wall20" src="img/wall_t_20.png">
+
+
+
+        <!-- <img id="block1" src="img/block1.jpg">
+        <img id="block" src="img/block.png">
+        <img id="capBottom" src="img/capBottom.png">
+        <img id="capLeft" src="img/capLeft.png">
+        <img id="capRight" src="img/capRight.png">
+        <img id="capTop" src="img/capTop.png">
+        <img id="pipeConnectorBottom" src="img/pipeConnectorBottom.png">
+        <img id="pipeConnectorDownwards" src="img/pipeConnectorDownwards.png">
+        <img id="pipeConnectorLeft" src="img/pipeConnectorLeft.png">
+        <img id="pipeConnectorRight" src="img/pipeConnectorRight.png">
+        <img id="pipeConnectorTop" src="img/pipeConnectorTop.png">
+        <img id="pipeCorner1" src="img/pipeCorner1.png">
+        <img id="pipeCorner2" src="img/pipeCorner2.png">
+        <img id="pipeCorner3" src="img/pipeCorner3.png">
+        <img id="pipeCorner4" src="img/pipeCorner4.png">
+        <img id="pipeCross" src="img/pipeCross.png">
+        <img id="pipeHorizontal" src="img/pipeHorizontal.png">
+        <img id="pipeVertical" src="img/pipeVertical.png"> -->
+    <!------------------------------------------------------------------------------------------>
+        <img width="400" height="40" id="blinky1" src="img/ghosts/blinky/blinky_1.png">
+        <img id="blinky2" src="img/ghosts/blinky/blinky_2.png">
+        <img id="clyde1" src="img/ghosts/clyde/clyde_1.png">
+        <img id="clyde2" src="img/ghosts/clyde/clyde_2.png">
+        <img id="inky1" src="img/ghosts/inky/inky_1.png">
+        <img id="inky2" src="img/ghosts/inky/inky_2.png">
+        <img id="pinky1" src="img/ghosts/pinky/pinky_1.png">
+        <img id="pinky2" src="img/ghosts/pinky/pinky_2.png">
+
+        <img id="scared1" src="img/ghosts/scared/scared_1.png">
+        <img id="scared2" src="img/ghosts/scared/scared_2.png">
+        <img id="scared3" src="img/ghosts/scared/scared_3.png">
+        <img id="scared4" src="img/ghosts/scared/scared_4.png">
+
+        <img id="eyes_b" src="img/ghosts/eyes_d.png">
+        <img id="eyes_l" src="img/ghosts/eyes_l.png">
+        <img id="eyes_r" src="img/ghosts/eyes_r.png">
+        <img id="eyes_t" src="img/ghosts/eyes_u.png">
+      </div>
+    </span>  <span>
+        
+        <div id="field">
+          <div id="pacmanwrapper">
+            <div id="pacman"></div>
+          </div>
+          
+          <div id="block"></div>
+        </div>
+    </span>
+  </div>
+  <canvas id="canvas" width="400" height="500"></canvas>
 
 
 </body>
