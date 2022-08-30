@@ -1,34 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sqllite
-  labels:
-    app: sqllite
+  name: {{ CI_COMMIT_REF_NAME }}-sqllite
 spec:
   selector:
     matchLabels:
-      app: sqllite
+      app: {{ CI_COMMIT_REF_NAME }}-sqllite
   template:
     metadata:
       labels:
-        app: sqllite
+        app: {{ CI_COMMIT_REF_NAME }}-sqllite
     spec:
       imagePullSecrets:
-      - name: gitlab-registry-{{ CI_PROJECT_ID }}
+      - name: gitlab-registry-credentials
       containers:
-      - name: sqllite
-        image: {{ CI_REGISTRY_IMAGE }}/sqllite:latest
-        resources:
-          limits:
-            cpu: 50m
-            memory: 100M
+      - name: app
+        image: {{ CI_REGISTRY_IMAGE }}/sqllite-{{ CI_COMMIT_REF_NAME }}:latest
         ports:
         - containerPort: 6379
-        volumeMounts:
-        - mountPath: "/data"
-          name: sqllite-volume
-      volumes:
-      - name: sqllite-volume
-        persistentVolumeClaim:
-          claimName: sqllite-pvc
+        livenessProbe:
+          httpGet:
+            path: /index.html
+            port: 6379
+          periodSeconds: 60
+          failureThreshold: 1
 
