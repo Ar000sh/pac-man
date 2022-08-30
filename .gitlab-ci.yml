@@ -26,7 +26,7 @@ registry-cred:
 volumes:
     stage: build
     script:
-    - kubectl apply -f deploy/redis-pvc.yaml
+    - kubectl apply -f deploy/sqllite-pvc.yaml
 
 
 container:
@@ -41,11 +41,11 @@ container:
 
 
   
-redis:
+sqllite:
    stage: deploy
    script:
-   - kubectl apply -f deploy/redis-dep.yaml
-   - kubectl apply -f deploy/redis-svc.yaml
+   - kubectl apply -f deploy/sqllite-dep.yaml
+   - kubectl apply -f deploy/sqllite-svc.yaml
 
 
 webapp:
