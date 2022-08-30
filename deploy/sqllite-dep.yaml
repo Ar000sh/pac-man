@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
       - name: gitlab-registry-{{ CI_PROJECT_ID }}
       containers:
-      - name: app
+      - name: sqllite
         image: {{ CI_REGISTRY_IMAGE }}/sqllite:latest
         resources:
           limits:
