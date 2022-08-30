@@ -15,7 +15,6 @@ spec:
     spec:
       imagePullSecrets:
         - name: gitlab-registry-credentials
-
       containers:
       - name: sqllite
         image: {{ CI_REGISTRY_IMAGE }}/sqllite:latest
