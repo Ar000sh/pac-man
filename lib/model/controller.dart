@@ -60,8 +60,7 @@ class Controller {
     view.createGhosts();
     view.createLives();
     
-    // print(this.map.pellets.length);
-    // print(view.pellets.length);
+
 
 
     
@@ -169,7 +168,6 @@ class Controller {
         if (ghost.scared) {
           ghosteaten(ghost);
         } else {
-          print("colliding with player");
           turnoff = true;
         }
 
@@ -209,7 +207,7 @@ Future<void> setaNewHighscore(int highscore) async {
   );
   }
     
-
+  await getHighscore();
 }
 
   void ghosteaten(Ghost ghost) {
@@ -228,7 +226,6 @@ Future<void> setaNewHighscore(int highscore) async {
     if (startGame) {
       map.boundaries.forEach((boundary) {
         if (rectangleCircleCollision(player.x,boundary.x,player.y,boundary.y,player.radius,player.velx,player.vely)){
-            print("the x velcoity will be sit to 0 in the gameloop");
             player.velx = 0;
             player.vely = 0;
         }
@@ -239,7 +236,6 @@ Future<void> setaNewHighscore(int highscore) async {
         if (circleCircleCollision(currentpellet,player)) {
           view.deletePellet(i);
           map.pellets.removeAt(i);
-          print("pelletsList len: ${map.pellets.length}");
           score = score + 10;
           view.updateScore(score);
 
@@ -337,7 +333,7 @@ Future<void> setaNewHighscore(int highscore) async {
     view.createGhosts();
     changeLevel();
     reset();
-    getHighscore();
+    
 
   }
   
