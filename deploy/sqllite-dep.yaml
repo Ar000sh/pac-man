@@ -14,11 +14,11 @@ spec:
         app: sqllite
     spec:
       imagePullSecrets:
-        - name: gitlab-registry-credentials
+      - name: gitlab-registry-credentials
 
       containers:
-      - name: sqllite
-        image: "{{ CI_REGISTRY_IMAGE }}/sqllite:latest"
+      - name: app
+        image: {{ CI_REGISTRY_IMAGE }}/sqllite:latest
         resources:
           limits:
             cpu: 50m
