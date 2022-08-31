@@ -14,7 +14,7 @@ from flask_sqlalchemy import SQLAlchemy
 #         cursor.close()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@10.152.183.34:3306/demo'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@mariadb:3306/demo'
 db = SQLAlchemy(app)
 
 
