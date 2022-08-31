@@ -18,7 +18,7 @@ from modales import Highscore
 
 app = Flask(__name__)
 CORS(app) # This allows CORS for all domains on all routes
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@mariadb:3306/demo'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@10.152.183.34:3306/demo'
 db = SQLAlchemy(app)
 
 @app.route('/highscores', methods=['GET'])
