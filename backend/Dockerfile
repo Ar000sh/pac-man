@@ -2,7 +2,7 @@ FROM python:3.9-slim
 
 WORKDIR /app
 ADD requirements.txt ./
-ADD database.db ./
+ADD db/ db/
 ADD modales.py ./
 RUN pip install -r requirements.txt
 

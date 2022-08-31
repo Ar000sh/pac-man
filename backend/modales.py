@@ -12,7 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 #         cursor.close()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/database.db'
 db = SQLAlchemy(app)
 
 
