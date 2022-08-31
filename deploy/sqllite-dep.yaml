@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sqllite
@@ -25,7 +25,7 @@ spec:
           ports:
             - containerPort: 5000
           volumeMounts:
-            - mountPath: "/app"
+            - mountPath: "/data"
               name: sqllite-volume
       volumes:
         - name: sqllite-volume
