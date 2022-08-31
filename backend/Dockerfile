@@ -7,9 +7,9 @@ ADD requirements.txt ./
 RUN pip install -r requirements.txt
 
 
-CMD python /app/routes.py
+# CMD python /app/routes.py
 CMD python /app/modales.py
 EXPOSE 5000
 
 ADD modales.py ./
-ADD routes.py ./
+# ADD routes.py ./
