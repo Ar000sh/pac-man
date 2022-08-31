@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deploy
+  labels:
+    app: mariadb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb:latest
+          ports:
+            - containerPort: 3306
+              name: db-port
+          env:
+            - name: MARIADB_DATABASE
+              value: demo
+            - name: MARIADB_PASSWORD
+              value: Password123!
+
+          #env:
+            #- name: MARIADB_ROOT_PASSWORD
+              #value: "Password123!"
+            #- name: MARIADB_DATABASE
+             # value: demo 
