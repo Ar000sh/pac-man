@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+# from sqlalchemy import create_engine
 
+# engine = create_engine("mysql+pymysql://root:Password123!@localhost:3306/database")
 # from sqlalchemy import event
 # from sqlalchemy.engine import Engine
 # from sqlite3 import Connection as SQLite3Connection
@@ -12,7 +14,7 @@ from flask_sqlalchemy import SQLAlchemy
 #         cursor.close()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@localhost:3306/demo'
 db = SQLAlchemy(app)
 
 
