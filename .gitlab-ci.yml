@@ -53,6 +53,11 @@ webapp:
   - mo deploy/webapp-dep.yaml | kubectl apply -f -
   - mo deploy/webapp-svc.yaml | kubectl apply -f -
 
+mariadb:
+  stage: deploy
+  script:
+    - mo deploy/mariadb-dep.yaml | kubectl apply -f - 
+
 ingress:
   stage: deploy
   only:
