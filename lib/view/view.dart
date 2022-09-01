@@ -1,6 +1,6 @@
 part of pacmann;
 
-
+// The View class is what 
 class View{
   Map map;
   Player player;
