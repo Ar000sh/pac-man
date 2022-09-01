@@ -10,7 +10,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 
-part 'model/controller.dart';
+part 'controller/controller.dart';
 part 'model/boundary.dart';
 part 'model/player.dart';
 part 'model/pellet.dart';
@@ -24,7 +24,7 @@ part 'model/blinky.dart';
 part 'model/clyde.dart';
 part 'model/inky.dart';
 part 'model/pinky.dart';
-part 'model/view.dart';
+part 'view/view.dart';
 
 
 
