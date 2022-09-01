@@ -18,7 +18,7 @@ from sqlalchemy import func
 
 app = Flask(__name__)
 CORS(app) # This allows CORS for all domains on all routes
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@10.152.183.34:3306/demo'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Password123!@mariadb:3306/demo'
 db = SQLAlchemy(app)
 
 # engine = create_engine("mysql+pymysql://root:Password123!@localhost:3306/database")
