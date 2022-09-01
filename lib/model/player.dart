@@ -164,9 +164,8 @@ class Player {
     } else if (this.vely < 0) {
 
       direction = 'top';
-    } // x:22 // y:22 x: 342 y: 402
-    // print("player x : ${this.x}"); // x < 60 || x > 300 || y > 460 || y < 60
-    // print("player y : ${this.y}");
+    } 
+    
   }
   
 }
