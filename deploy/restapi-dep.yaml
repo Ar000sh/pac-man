@@ -1,33 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sqllite
+  name: restapi
   labels:
-    app: sqllite
+    app: restapi
 spec:
   selector:
     matchLabels:
-      app: sqllite
+      app: restapi
   template:
     metadata:
       labels:
-        app: sqllite
+        app: restapi
     spec:
       imagePullSecrets:
         - name: gitlab-registry-credentials
       containers:
-        - name: sqllite
-          image: {{ CI_REGISTRY_IMAGE }}/backendsql:latest
+        - name: restapi
+          image: {{ CI_REGISTRY_IMAGE }}/restapi:latest
           resources:
             limits:
               cpu: 50m
               memory: 100M
           ports:
             - containerPort: 5000
-          volumeMounts:
-            - mountPath: "/app/db"
-              name: sqllite-volume
-      volumes:
-        - name: sqllite-volume
-          persistentVolumeClaim:
-            claimName: sqllite-pvc 
+          
