@@ -228,10 +228,10 @@ class Game {
         case '*':
         
   // we need the boundary width and heigth to add half of each for it be in the center when optimizing dont forget to just use the static Boundary.width
-            pellets.add(new Pellet(posx + ((Boundary.WIDTH / 2 - 4) as int)  ,posy + ((Boundary.HEIGHT / 2 - 4) as int)));
+            pellets.add(new Pellet(posx + ((Boundary.WIDTH / 2 - 4) as int)  ,posy + ((Boundary.HEIGHT / 2 - 4) as int),8));
             break;
           case 'p':
-            powerups.add(new PowerUp(posx + ((Boundary.WIDTH / 2 - 4) as int)  ,posy + ((Boundary.HEIGHT / 2 - 4) as int)));
+            powerups.add(new PowerUp(posx + ((Boundary.WIDTH / 2 - 4) as int)  ,posy + ((Boundary.HEIGHT / 2 - 4) as int),8));
             break;
 
           default:
@@ -270,10 +270,10 @@ class Game {
          
           case '*':
   // we need the boundary width and heigth to add half of each for it be in the center when optimizing dont forget to just use the static Boundary.width
-            pellets.add(new Pellet(posx + ((Boundary.WIDTH / 2 - 4) as int)  ,posy + ((Boundary.HEIGHT / 2 - 4) as int)));
+            pellets.add(new Pellet(posx + ((Boundary.WIDTH / 2 - 4) as int)  ,posy + ((Boundary.HEIGHT / 2 - 4) as int),8));
             break;
           case 'p':
-            powerups.add(new PowerUp(posx + ((Boundary.WIDTH / 2 - 4) as int)  ,posy + ((Boundary.HEIGHT / 2 - 4) as int)));
+            powerups.add(new PowerUp(posx + ((Boundary.WIDTH / 2 - 4) as int)  ,posy + ((Boundary.HEIGHT / 2 - 4) as int),8));
             break;
 
           default:

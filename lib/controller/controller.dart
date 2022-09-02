@@ -4,19 +4,18 @@ part of pacmann;
 class Controller {
 
 
-  Map map;
-  Player player;
-  List<Ghost> ghosts;
+  // Map map;
+  // Player player;
+  // List<Ghost> ghosts;
   Game game;
   View view;
-  int levelnum = 0;
+  // int levelnum = 0;
   int currentHighscore = 0;
 
-  bool debug = false;
+
   int score = 0;
   bool turnoff = false;
   bool gameOver = true;
-  bool changelevel = true;
   bool startGame = false;
   
 
@@ -39,7 +38,7 @@ class Controller {
     //   ];
     // this.ghosts.add(new Inky( 2, this.player,this.map.boundaries,ghosts[0]));
     
-    this.view = new View(this.game,this.game.player,this.game.ghosts);
+    this.view = new View();
      view.startButton.onClick.listen((_) {
       if (gameOver) {
         startGame = true;
@@ -54,13 +53,13 @@ class Controller {
     view.updateLevel(game.levelnum);
     // player.handleKeyboard();
 
-    view.createBoundaries();
+    view.createBoundaries(game);
 
-    view.createPellets();
+    view.createPellets(game);
 
-    view.createPowerups();
+    view.createPowerups(game);
 
-    view.createGhosts();
+    view.createGhosts(game);
     view.createLives();
     
 
@@ -268,12 +267,12 @@ Future<void> setaNewHighscore(int highscore) async {
 
     
       game.player.movePlayer();
-      view.drawPlayer();
+      view.drawPlayer(game);
       game.player.update();
-      view.updatePlayer();
+      view.updatePlayer(game);
       if (turnoff) {
         timer.cancel();
-        view.playerdies();
+        view.playerdies(game);
         Timer(Duration(milliseconds: 1000), () {
           if (view.lives.isNotEmpty) {
             view.deletelife();
@@ -291,11 +290,11 @@ Future<void> setaNewHighscore(int highscore) async {
       }
 
         if(game.pellets.isEmpty) {
-          view.deleteGhosts();
+          view.deleteGhosts(game);
           game.createPelletsandPowerUps();
-          view.createPellets();
-          view.createPowerups();
-          view.createGhosts();
+          view.createPellets(game);
+          view.createPowerups(game);
+          view.createGhosts(game);
           game.setnewLevel();
           view.updateLevel(game.levelnum);
           game.reset();
@@ -310,7 +309,7 @@ Future<void> setaNewHighscore(int highscore) async {
     gameOver = true;
     startGame = false;
     turnoff = false;
-    levelnum = 0; // resetten in Game 
+    game.levelnum = 0; // resetten in Game 
     score = 0;
     view.createLives();
     if (view.pellets.isNotEmpty) {
@@ -330,11 +329,11 @@ Future<void> setaNewHighscore(int highscore) async {
       }
 
     }
-    view.deleteGhosts();
+    view.deleteGhosts(game);
     game.createPelletsandPowerUps();
-    view.createPellets();
-    view.createPowerups();
-    view.createGhosts();
+    view.createPellets(game);
+    view.createPowerups(game);
+    view.createGhosts(game);
     game.setnewLevel();
     view.updateLevel(game.levelnum);
     game.reset();

@@ -16,10 +16,10 @@ part 'model/player.dart';
 part 'model/pellet.dart';
 part 'model/ghost.dart';
 part 'model/powerUp.dart';
-part 'model/map.dart';
 
 
-part 'model/circle.dart';
+
+
 part 'model/blinky.dart';
 part 'model/clyde.dart';
 part 'model/inky.dart';

@@ -17,9 +17,9 @@ class Ghost {
 
   // Player player;
   // List<Boundary> boundaries;
-  List<int> startpos = [];
+  // List<int> startpos = [];
   
-  int change = 0;
+  // int change = 0;
   int backgroundimg = 0;
   bool inGhosthous = true;
   bool movenormally = false;
@@ -44,13 +44,13 @@ class Ghost {
 
   }
 
-  void draw() {
-    // c.beginPath();
-    // c.arc(this.x,this.y,this.radius,0,pi*2);
-    // c.fillStyle = this.scared ? 'blue' : this.color;
-    // c.fill();
-    // c.closePath();
-  }
+  // void draw() {
+  //   // c.beginPath();
+  //   // c.arc(this.x,this.y,this.radius,0,pi*2);
+  //   // c.fillStyle = this.scared ? 'blue' : this.color;
+  //   // c.fill();
+  //   // c.closePath();
+  // }
 
   void update() {
  
@@ -158,62 +158,62 @@ class Ghost {
     
     
   }
-  void drawBlueGhost() {
-    // if (scared && !scared2) {
+  // void drawBlueGhost() {
+  //   // if (scared && !scared2) {
       
       
     
-    //   if(n == 1) {
-    //     ghostbody.style.background = 'url(img/ghosts/scared/scared_1.png)';
-    //     this.n = 2;
-    //   } else {
-    //     ghostbody.style.background = 'url(img/ghosts/scared/scared_2.png)';
-    //     this.n = 1;
-    //   }
+  //   //   if(n == 1) {
+  //   //     ghostbody.style.background = 'url(img/ghosts/scared/scared_1.png)';
+  //   //     this.n = 2;
+  //   //   } else {
+  //   //     ghostbody.style.background = 'url(img/ghosts/scared/scared_2.png)';
+  //   //     this.n = 1;
+  //   //   }
     
         
-    // }
+  //   // }
 
-  }
+  // }
 
 
-  void drawWhiteGhost() {
-    // if (scared && scared2) {
-    //   if(n == 1) {
-    //     ghostbody.style.background = 'url(img/ghosts/scared/scared_3.png)';
-    //     this.n = 2;
-    //   } else {
-    //     ghostbody.style.background = 'url(img/ghosts/scared/scared_4.png)';
-    //     this.n = 1;
-    //   }
+  // void drawWhiteGhost() {
+  //   // if (scared && scared2) {
+  //   //   if(n == 1) {
+  //   //     ghostbody.style.background = 'url(img/ghosts/scared/scared_3.png)';
+  //   //     this.n = 2;
+  //   //   } else {
+  //   //     ghostbody.style.background = 'url(img/ghosts/scared/scared_4.png)';
+  //   //     this.n = 1;
+  //   //   }
     
        
-    //   }
+  //   //   }
     
 
-  }
+  // }
 
-  void drawEyes() {
-    // if (!this.scared) {
-    //    switch (this.direction) {
-    //     case 'right':
-    //       ghosteyes.style.background = 'url(img/ghosts/eyes_r.png)';
-    //       break;
-    //     case 'left':
-    //       ghosteyes.style.background = 'url(img/ghosts/eyes_l.png)';
-    //       break;
-    //     case 'top':
-    //       ghosteyes.style.background = 'url(img/ghosts/eyes_u.png)';
-    //       break;
-    //     case 'bottom':
-    //       ghosteyes.style.background = 'url(img/ghosts/eyes_d.png)';
-    //       break;
-    //     default:
+  // void drawEyes() {
+  //   // if (!this.scared) {
+  //   //    switch (this.direction) {
+  //   //     case 'right':
+  //   //       ghosteyes.style.background = 'url(img/ghosts/eyes_r.png)';
+  //   //       break;
+  //   //     case 'left':
+  //   //       ghosteyes.style.background = 'url(img/ghosts/eyes_l.png)';
+  //   //       break;
+  //   //     case 'top':
+  //   //       ghosteyes.style.background = 'url(img/ghosts/eyes_u.png)';
+  //   //       break;
+  //   //     case 'bottom':
+  //   //       ghosteyes.style.background = 'url(img/ghosts/eyes_d.png)';
+  //   //       break;
+  //   //     default:
         
-    //   }
-    // }
+  //   //   }
+  //   // }
      
-  }
+  // }
 
   void changeModes() {
     this.scared = true;

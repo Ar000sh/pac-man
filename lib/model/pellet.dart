@@ -1,8 +1,15 @@
 part of pacmann;
-class Pellet extends Circle{
+class Pellet{
+  int x;
+  int y;
+  int radius;
 
+  Pellet(int x, int y, int radius) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius; 
+  }
 
-  Pellet(int x, int y) : super(x,y,8);
 
   
 

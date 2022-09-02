@@ -15,7 +15,6 @@ class Player {
   List<bool> keys = [false,false,false,false];
   String direction= '';
 
-  int n = 0;
   List<int> start = [( Boundary.WIDTH * 9 +  2) as int,(Boundary.HEIGHT * 16 +  2) as int,-5,0];
 
   Player(Game game,int speed) {

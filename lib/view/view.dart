@@ -2,14 +2,13 @@ part of pacmann;
 
 // The View class is what interacts the the DOM Tree 
 class View{
-  Game map;
-  Player player;
-  List<Ghost> ghosts;
+  // Game game;
+  // Player player;
+  // List<Ghost> ghosts;
   DivElement field = document.querySelector('#field') as DivElement;
   DivElement pacmanwrapper = document.querySelector('#pacmanwrapper') as DivElement;
   int playerbackgroundindex = 0;
-  int ghostbackgroundindex = 0;
-  int ghostbodybackgroundindex = 0;
+
   List<DivElement> boundaries = [];
   List<DivElement> pellets = [];
   List<DivElement> powerUps = [];
@@ -24,10 +23,10 @@ class View{
 
   SpanElement scoreEL = document.querySelector('#scoreEl') as SpanElement;
 
-  View(this.map,this.player,this.ghosts);
+  View();
 
-  void createBoundaries() {
-    for (var boundary in map.boundaries) {
+  void createBoundaries(Game game) {
+    for (var boundary in game.boundaries) {
       DivElement newchild = DivElement();
       newchild.className = "boundary";
   // newchild.style.background ="white";
@@ -39,8 +38,8 @@ class View{
   }
 
 
-  void createPellets() {
-    for (var pellet in map.pellets) {
+  void createPellets(Game game) {
+    for (var pellet in game.pellets) {
       DivElement newchild = DivElement();
       newchild.className = "collectibles";
   // newchild.style.background ="white";
@@ -58,17 +57,17 @@ class View{
 
     pellets.removeAt(index);
   }
-  void deleteAllPellet() {
+  // void deleteAllPellet() {
     
-    pellets.forEach((pellet) {
-      pellet.remove();
-      pellets.removeAt(pellets.indexOf(pellet));
-    });
+  //   pellets.forEach((pellet) {
+  //     pellet.remove();
+  //     pellets.removeAt(pellets.indexOf(pellet));
+  //   });
     
-    // pellets.removeAt(0);
-  }
-  void createPowerups() {
-    for (var powerups in map.powerups) {
+  //   // pellets.removeAt(0);
+  // }
+  void createPowerups(Game game) {
+    for (var powerups in game.powerups) {
       DivElement newchild = DivElement();
       newchild.className = "collectibles";
   // newchild.style.background ="white";
@@ -85,9 +84,9 @@ class View{
     powerUps.removeAt(index);
   }
 
-  void drawPlayer() {
+  void drawPlayer(Game game) {
     if (playerbackgroundindex == 1) {
-      switch (player.direction) {
+      switch (game.player.direction) {
         case 'right':
           pacmanwrapper.style.background = "url(img/pacman/pacman_2r.png)";
           break;
@@ -113,13 +112,13 @@ class View{
 
   }
 
-  void updatePlayer() {
-    pacmanwrapper.style.left = '${player.x - 4}px';
-    pacmanwrapper.style.top = '${player.y - 4}px';
+  void updatePlayer(Game game) {
+    pacmanwrapper.style.left = '${game.player.x - 4}px';
+    pacmanwrapper.style.top = '${game.player.y - 4}px';
   }
 
-  void createGhosts() {
-    for (var ghost in ghosts) {
+  void createGhosts(Game game) {
+    for (var ghost in game.ghosts) {
       DivElement ghostbody = DivElement();
       ghostbody.className = "ghostbody";
       ghostbodys.add(ghostbody);
@@ -132,11 +131,11 @@ class View{
     }
   }
 
-  void deleteGhosts() {
+  void deleteGhosts(Game game) {
     DivElement tempghostbody;
     DivElement tempghosteyes;
-    print(ghosts.length);
-    for (int i = 0; i < ghosts.length; i++) {
+    print(game.ghosts.length);
+    for (int i = 0; i < game.ghosts.length; i++) {
       tempghostbody = ghostbodys[0];
       ghostbodys.removeAt(0);
       tempghosteyes = ghosteyes[0];
@@ -273,8 +272,8 @@ class View{
     lives.removeAt(0);
   }
 
-  void playerdies() {
-    for (int i = 0; i < ghosts.length; i++) {
+  void playerdies(Game game) {
+    for (int i = 0; i < game.ghosts.length; i++) {
       ghostbodys[i].style.background = '';
       ghosteyes[i].style.background = '';
 
