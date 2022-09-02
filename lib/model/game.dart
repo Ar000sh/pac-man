@@ -47,80 +47,95 @@ class Game {
 
   }
 
-  void setnewLevel() {
+  // void setnewLevel() {
     
-    levelnum++;
+  //   levelnum++;
     
-    if (levelnum == 1) {
+  //   if (levelnum == 1) {
       
-      ghosts.forEach((ghost) {
-        ghost.speed = 2;
-        if (ghost is Blinky) {
-          ghost.chasedistance = 4;
-        }
-        if (ghost is Clyde) {
-          ghost.chasedistance = 3;
-        }
-      }); 
+  //     ghosts.forEach((ghost) {
+  //       ghost.speed = 2;
+  //       if (ghost is Blinky) {
+  //         ghost.chasedistance = 4;
+  //       }
+  //       if (ghost is Clyde) {
+  //         ghost.chasedistance = 3;
+  //       }
+  //     }); 
 
-    }
-    if (levelnum == 2) {
-      ghosts.forEach((ghost) {
-        if (ghost is Blinky) {
-          ghost.chasedistance = 6;
-        }
-        if (ghost is Clyde) {
-          ghost.chasedistance = 5;
-        }
-      }); 
+  //   }
+  //   if (levelnum == 2) {
+  //     ghosts.forEach((ghost) {
+  //       if (ghost is Blinky) {
+  //         ghost.chasedistance = 6;
+  //       }
+  //       if (ghost is Clyde) {
+  //         ghost.chasedistance = 5;
+  //       }
+  //     }); 
 
-    }
-    if (levelnum == 3) {
-      ghosts.forEach((ghost) {
-        ghost.speed = 4;
-        if (ghost is Blinky) {
-          ghost.chasedistance = 4;
-        }
-        if (ghost is Clyde) {
-          ghost.chasedistance = 3;
-        }
-      });
-    }
-    if (levelnum == 4) {
-      ghosts.forEach((ghost) {
-        ghost.speed = 4;
-        if (ghost is Blinky) {
-          ghost.chasedistance = 6;
-        }
-        if (ghost is Clyde) {
-          ghost.chasedistance = 5;
-        }
-      }); 
+  //   }
+  //   if (levelnum == 3) {
+  //     ghosts.forEach((ghost) {
+  //       ghost.speed = 4;
+  //       if (ghost is Blinky) {
+  //         ghost.chasedistance = 4;
+  //       }
+  //       if (ghost is Clyde) {
+  //         ghost.chasedistance = 3;
+  //       }
+  //     });
+  //   }
+  //   if (levelnum == 4) {
+  //     ghosts.forEach((ghost) {
+  //       ghost.speed = 4;
+  //       if (ghost is Blinky) {
+  //         ghost.chasedistance = 6;
+  //       }
+  //       if (ghost is Clyde) {
+  //         ghost.chasedistance = 5;
+  //       }
+  //     }); 
 
       
-    }
-    if (levelnum == 5) {
-      ghosts.forEach((ghost) {
-        ghost.speed = 5;
-        if (ghost is Blinky) {
-          ghost.chasedistance = 4;
-        }
-        if (ghost is Clyde) {
-          ghost.chasedistance = 3;
-        }
-      });
-    }
-    if (levelnum == 6) {
-      ghosts.forEach((ghost) {
-        ghost.speed = 5;
-        if (ghost is Blinky) {
-          ghost.chasedistance = 6;
-        }
-        if (ghost is Clyde) {
-          ghost.chasedistance = 5;
-        }
-      });
-    }
+  //   }
+  //   if (levelnum == 5) {
+  //     ghosts.forEach((ghost) {
+  //       ghost.speed = 5;
+  //       if (ghost is Blinky) {
+  //         ghost.chasedistance = 4;
+  //       }
+  //       if (ghost is Clyde) {
+  //         ghost.chasedistance = 3;
+  //       }
+  //     });
+  //   }
+  //   if (levelnum == 6) {
+  //     ghosts.forEach((ghost) {
+  //       ghost.speed = 5;
+  //       if (ghost is Blinky) {
+  //         ghost.chasedistance = 6;
+  //       }
+  //       if (ghost is Clyde) {
+  //         ghost.chasedistance = 5;
+  //       }
+  //     });
+  //   }
+
+  // }
+
+  void changeLevel(int ghostspeed, double blinkydis, double clydedis) {
+    ghosts.forEach((ghost) {
+      ghost.speed = ghostspeed;
+      if (ghost is Blinky) {
+        ghost.chasedistance = blinkydis;
+      }
+      if (ghost is Clyde) {
+        ghost.chasedistance = clydedis;
+      }
+    }); 
+
+    
 
   }
 

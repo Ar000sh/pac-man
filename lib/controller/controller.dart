@@ -282,6 +282,7 @@ Future<void> setaNewHighscore(int highscore) async {
 
           }else {
             setaNewHighscore(score);
+            
             createNewGame();//ggggggggggggggggggggggggggggggggggggggg
           }        
                 
@@ -295,9 +296,18 @@ Future<void> setaNewHighscore(int highscore) async {
           view.createPellets(game);
           view.createPowerups(game);
           view.createGhosts(game);
-          game.setnewLevel();
-          view.updateLevel(game.levelnum);
           game.reset();
+          game.levelnum++;
+          if (game.levelnum < 7) {
+            _loadLevel();
+            view.updateLevel(game.levelnum);
+          } else {
+            timer.cancel();
+          }
+          
+          //game.setnewLevel();
+          
+          
           print(game.pellets.length);
           print(game.pellets.length);
           
@@ -305,12 +315,20 @@ Future<void> setaNewHighscore(int highscore) async {
     }
   }
 
+    void _loadLevel() async {
+    var response = await http.get(Uri.http(window.location.host, "/levels/Level${game.levelnum}.json"));
+    var parameters = jsonDecode(response.body);
+    game.changeLevel(parameters["ghostspeed"] as int, parameters["blinky"] as double, parameters["clyde"] as double);
+    
+  }
+
   void createNewGame() {
     gameOver = true;
     startGame = false;
     turnoff = false;
-    game.levelnum = 0; // resetten in Game 
+    game.levelnum = 1; // resetten in Game 
     score = 0;
+    view.updateScore(score);
     view.createLives();
     if (view.pellets.isNotEmpty) {
       int pelletslen = view.pellets.length;
@@ -334,7 +352,8 @@ Future<void> setaNewHighscore(int highscore) async {
     view.createPellets(game);
     view.createPowerups(game);
     view.createGhosts(game);
-    game.setnewLevel();
+    _loadLevel();
+    // game.setnewLevel();
     view.updateLevel(game.levelnum);
     game.reset();
     
