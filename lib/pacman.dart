@@ -24,6 +24,7 @@ part 'model/blinky.dart';
 part 'model/clyde.dart';
 part 'model/inky.dart';
 part 'model/pinky.dart';
+part 'model/game.dart';
 part 'view/view.dart';
 
 

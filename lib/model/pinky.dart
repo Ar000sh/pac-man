@@ -5,8 +5,8 @@ class Pinky extends Ghost {
   int posx = 0;
   int posy = 0;
 
-  Pinky( int speed,  Player player,List<Boundary> boundaries) 
-    : super( ( Boundary.WIDTH * 9 +  2) as int, (Boundary.HEIGHT * 10 +  2) as int, 0, 0,  speed, player,boundaries);
+  Pinky( int speed,  Game game) 
+    : super( ( Boundary.WIDTH * 9 +  2) as int, (Boundary.HEIGHT * 10 +  2) as int, 0, 0,  speed, game);
   
 
   void findp() {
@@ -15,26 +15,26 @@ class Pinky extends Ghost {
       // x:22 // y:22 x: 342 y: 402
     int tempx = 0;
     int tempy = 0;
-    for (int i = 0; i < boundaries.length; i++ ) {
-      Boundary boundary = boundaries[i];
-      if(player.velx > 0) {
-        tempx  = player.x + 5 * 4;
-        tempy = player.y - 5 * 4;
+    for (int i = 0; i < game.boundaries.length; i++ ) {
+      Boundary boundary = game.boundaries[i];
+      if(game.player.velx > 0) {
+        tempx  = game.player.x + 5 * 4;
+        tempy = game.player.y - 5 * 4;
 
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402 && !l.contains('right') ) {
           l.add('right');
           posx = tempx;
           posy = tempy;
         }
-        tempx  = player.x + 5 * 4;
-        tempy = player.y + 5 * 4;
+        tempx  = game.player.x + 5 * 4;
+        tempy = game.player.y + 5 * 4;
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('right') ) {
           l.add('right');
           posx = tempx;
           posy = tempy;
         }
-        tempx  = player.x + 5 * 4;
-        tempy = player.y;
+        tempx  = game.player.x + 5 * 4;
+        tempy = game.player.y;
 
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('right')) {
           l.add('right');
@@ -42,9 +42,9 @@ class Pinky extends Ghost {
           posy = tempy;
         }
 
-      } else if (player.velx < 0) {
-        tempx = player.x - 5 * 4;
-        tempy = player.y + 5 * 4;
+      } else if (game.player.velx < 0) {
+        tempx = game.player.x - 5 * 4;
+        tempy = game.player.y + 5 * 4;
 
 
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('left') ) {
@@ -52,63 +52,63 @@ class Pinky extends Ghost {
           posx = tempx;
           posy = tempy;
         }
-        tempx = player.x - 5 * 4;
-        tempy = player.y - 5 * 4;
+        tempx = game.player.x - 5 * 4;
+        tempy = game.player.y - 5 * 4;
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('left') ) {
           l.add('left');
           posx = tempx;
           posy = tempy;
         }
 
-        tempx = player.x - 5 * 4;
-        tempy = player.y;
+        tempx = game.player.x - 5 * 4;
+        tempy = game.player.y;
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('left') ) {
           l.add('left');
           posx = tempx;
           posy = tempy;
         }
-      } else if (player.vely > 0) {
-        tempx = player.x - 5 * 4;
-        tempy = player.y + 5 * 4;
+      } else if (game.player.vely > 0) {
+        tempx = game.player.x - 5 * 4;
+        tempy = game.player.y + 5 * 4;
 
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('bottom') ) {
           l.add('bottom');
           posx = tempx;
           posy = tempy;
         }
-        tempx = player.x + 5 * 4;
-        tempy = player.y + 5 * 4;
+        tempx = game.player.x + 5 * 4;
+        tempy = game.player.y + 5 * 4;
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('bottom') ) {
           l.add('bottom');
           posx = tempx;
           posy = tempy;
         }
-        tempx = player.x ;
-        tempy = player.y + 5 * 4;
+        tempx = game.player.x ;
+        tempy = game.player.y + 5 * 4;
 
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('bottom') ) {
           l.add('bottom');
           posx = tempx;
           posy = tempy;
         }
-      } else if (player.vely < 0) {
-        tempx = player.x + 5 * 4;
-        tempy = player.y - 5 * 4;
+      } else if (game.player.vely < 0) {
+        tempx = game.player.x + 5 * 4;
+        tempy = game.player.y - 5 * 4;
 
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('top') ) {
           l.add('top');
           posx = tempx;
           posy = tempy;
         }
-        tempx = player.x - 5 * 4;
-        tempy = player.y - 5 * 4;
+        tempx = game.player.x - 5 * 4;
+        tempy = game.player.y - 5 * 4;
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('top') ) {
           l.add('top');
           posx = tempx;
           posy = tempy;
         }
-        tempx = player.x;
-        tempy = player.y - 5 * 4;
+        tempx = game.player.x;
+        tempy = game.player.y - 5 * 4;
         if (!rectangleCircleCollision(tempx,boundary.x,tempy,boundary.y,this.radius,this.velx,this.vely) && tempx >= 22 && tempx <= 342 && tempy >= 22 && tempy <= 402  && !l.contains('top') ) {
           l.add('top');
           posx = tempx;

@@ -4,7 +4,7 @@ class Blinky extends Ghost {
   final  List<int> start = [( Boundary.WIDTH * 9 +  2) as int,(Boundary.HEIGHT * 8 +  2) as int,0,0];
   double chasedistance;
  
-  Blinky(int speed,  Player player,List<Boundary> boundaries,double chasedistance) : super( ( Boundary.WIDTH * 9 +  2) as int, (Boundary.HEIGHT * 8 +  2) as int, 0, 0,  speed,player,boundaries) {
+  Blinky(int speed, Game game, double chasedistance) : super( ( Boundary.WIDTH * 9 +  2) as int, (Boundary.HEIGHT * 8 +  2) as int, 0, 0,  speed,game) {
     inGhosthous = false;
     this.chasedistance = chasedistance;
   }
@@ -21,7 +21,7 @@ class Blinky extends Ghost {
     List<double> distances = [];
     int tempx;
     int tempy;
-    if (sqrt((pow(this.x - player.x,2) + pow(this.y - player.y,2))) < chasedistance && !this.scared) {
+    if (sqrt((pow(this.x - game.player.x,2) + pow(this.y - game.player.y,2))) < chasedistance && !this.scared) {
       pathways.forEach((path) {  
         switch (path) {
           case 'right':
@@ -44,7 +44,7 @@ class Blinky extends Ghost {
             tempx = this.x;
             tempy = this.y;
         }
-        distances.add(sqrt((pow(tempx - player.x,2) + pow(tempy - player.y,2))));
+        distances.add(sqrt((pow(tempx - game.player.x,2) + pow(tempy - game.player.y,2))));
       });
           
       direction = pathways[distances.indexOf(findmin(distances))];

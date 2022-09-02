@@ -8,8 +8,8 @@ class Player {
   int vely;
   int radius;
   int speed;
-
-  List<Boundary> boundaries;
+  Game game;
+  // List<Boundary> boundaries;
 
   String lastkey = '';
   List<bool> keys = [false,false,false,false];
@@ -18,14 +18,14 @@ class Player {
   int n = 0;
   List<int> start = [( Boundary.WIDTH * 9 +  2) as int,(Boundary.HEIGHT * 16 +  2) as int,-5,0];
 
-  Player(List<Boundary> boundaries,int speed) {
+  Player(Game game,int speed) {
     this.x = ( Boundary.WIDTH * 9 +  2) as int;
     this.y = (Boundary.HEIGHT * 16 +  2) as int;
     this.velx = -5;
     this.vely = 0;
     this.radius = 8;
     this.speed = speed;
-    this.boundaries = boundaries;
+    this.game = game;
 
   }
 
@@ -99,8 +99,8 @@ class Player {
     if(this.keys[0] && this.lastkey == 'w') {
       //move up
 
-      for(int i = 0; i < boundaries.length; i++) {
-        boundary = boundaries[i];
+      for(int i = 0; i < game.boundaries.length; i++) {
+        boundary = game.boundaries[i];
         if(rectangleCircleCollision(this.x,boundary.x,this.y,boundary.y,this.radius,this.velx,-speed)) {
           this.vely = 0;
 
@@ -114,8 +114,8 @@ class Player {
     } else if(this.keys[1] && this.lastkey == 'a') {
 
       
-      for(int i = 0; i < boundaries.length; i++) {
-        boundary = boundaries[i];
+      for(int i = 0; i < game.boundaries.length; i++) {
+        boundary = game.boundaries[i];
         if(rectangleCircleCollision(this.x,boundary.x,this.y,boundary.y,this.radius,-speed,this.vely)) {
           this.velx = 0;
           break;
@@ -128,8 +128,8 @@ class Player {
     } else if(this.keys[2] && this.lastkey == 's') {
           
       
-      for(int i = 0; i < boundaries.length; i++) {
-        boundary = boundaries[i];
+      for(int i = 0; i < game.boundaries.length; i++) {
+        boundary = game.boundaries[i];
         if(rectangleCircleCollision(this.x,boundary.x,this.y,boundary.y,this.radius,this.velx,speed)) {
           this.vely = 0;
           break;
@@ -141,8 +141,8 @@ class Player {
       //print("d key was pressed");
       // move to the right
       // playertemp = new Playertest(this.x + 2, this.y, this.velx, this.vely, this.radius, this.radians, this.openRate, this.rotation,this.boundaries);      
-      for(int i = 0; i < boundaries.length; i++) {
-        boundary = boundaries[i];
+      for(int i = 0; i < game.boundaries.length; i++) {
+        boundary = game.boundaries[i];
         if(rectangleCircleCollision(this.x ,boundary.x,this.y,boundary.y,this.radius,speed,this.vely)) {
           this.velx = 0;
           break;

@@ -13,10 +13,10 @@ class Ghost {
   bool scared;
   bool scared2;
   String direction;
+  Game game;
 
-
-  Player player;
-  List<Boundary> boundaries;
+  // Player player;
+  // List<Boundary> boundaries;
   List<int> startpos = [];
   
   int change = 0;
@@ -28,7 +28,7 @@ class Ghost {
   final List<int> start = [];
 
 
-  Ghost( int x, int y, int velx, int vely, int speed, Player player,List<Boundary> boundaries) {
+  Ghost( int x, int y, int velx, int vely, int speed, Game game) {
 
     this.x = x;
     this.y = y;
@@ -39,8 +39,7 @@ class Ghost {
     this.speed = speed;
     this.scared = false;
     this.direction = '';
-    this.boundaries = boundaries;
-    this.player = player;
+    this.game = game;
     this.scared2 = false;
 
   }
@@ -75,7 +74,7 @@ class Ghost {
    
 
 
-    for (var boundary in boundaries) {
+    for (var boundary in game.boundaries) {
       
       if (rectangleCircleCollision(this.x,boundary.x,this.y,boundary.y,this.radius,this.speed,0) && !collisions.contains('right')) {
         collisions.add('right');

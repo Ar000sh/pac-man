@@ -8,8 +8,8 @@ class Inky extends Ghost {
   int posy = 0;
 
   
-  Inky(int speed,  Player player,List<Boundary> boundaries,Ghost blinky) 
-    : super( ( Boundary.WIDTH * 8 +  2) as int, (Boundary.HEIGHT * 10 +  2) as int, 0, 0,  speed, player,boundaries) {
+  Inky(int speed, Game game,Ghost blinky) 
+    : super( ( Boundary.WIDTH * 8 +  2) as int, (Boundary.HEIGHT * 10 +  2) as int, 0, 0,  speed, game) {
       this.blinky = blinky;
     }
 
@@ -30,20 +30,20 @@ class Inky extends Ghost {
     int vecx = 0;
     int vecy = 0;
     if(this.velx > 0) {
-      playerx = player.x + 10;
-      playery = player.y;
+      playerx = game.player.x + 10;
+      playery = game.player.y;
 
     } else if (this.velx < 0) {
-      playerx = player.x - 10;
-      playery = player.y;
+      playerx = game.player.x - 10;
+      playery = game.player.y;
 
     } else if (this.vely > 0) {
-      playerx = player.x ;
-      playery = player.y + 10;
+      playerx = game.player.x ;
+      playery = game.player.y + 10;
 
     } else if (this.vely < 0) {
-      playerx = player.x;
-      playery = player.y - 10;
+      playerx = game.player.x;
+      playery = game.player.y - 10;
 
     }
 

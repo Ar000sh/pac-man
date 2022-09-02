@@ -1,8 +1,8 @@
 part of pacmann;
 
-// The View class is what 
+// The View class is what interacts the the DOM Tree 
 class View{
-  Map map;
+  Game map;
   Player player;
   List<Ghost> ghosts;
   DivElement field = document.querySelector('#field') as DivElement;

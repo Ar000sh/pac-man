@@ -5,8 +5,8 @@ class Clyde extends Ghost {
   final  List<int> start = [( Boundary.WIDTH * 10 +  2) as int,(Boundary.HEIGHT * 10 +  2) as int,0,0];
 
   
-  Clyde(int speed, Player player,List<Boundary> boundaries,double chasedistance) 
-    : super( ( Boundary.WIDTH * 10 +  2) as int, (Boundary.HEIGHT * 10 +  2) as int, 0, 0, speed, player,boundaries) {
+  Clyde(int speed, Game game,double chasedistance) 
+    : super( ( Boundary.WIDTH * 10 +  2) as int, (Boundary.HEIGHT * 10 +  2) as int, 0, 0, speed, game) {
       this.chasedistance = chasedistance;
     }
       
@@ -22,9 +22,9 @@ class Clyde extends Ghost {
     int posy = 0;
     
     if (!this.scared) {
-      if (sqrt((pow(this.x - player.x,2) + pow(this.y - player.y,2))) < chasedistance) {
-        posx = player.x;
-        posy = player.y;
+      if (sqrt((pow(this.x - game.player.x,2) + pow(this.y - game.player.y,2))) < chasedistance) {
+        posx = game.player.x;
+        posy = game.player.y;
       } else {
         posx = 22;
         posy = 402;
