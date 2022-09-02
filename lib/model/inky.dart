@@ -2,7 +2,7 @@ part of pacmann;
 
 class Inky extends Ghost {
   
-  final  List<int> start = [( Boundary.WIDTH * 8 +  2) as int,(Boundary.HEIGHT * 10 +  2) as int,0,0];
+  final List<int> start = [( Boundary.WIDTH * 8 +  2) as int,(Boundary.HEIGHT * 10 +  2) as int,0,0];
   Ghost blinky;
   int posx = 0;
   int posy = 0;

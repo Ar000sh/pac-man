@@ -316,6 +316,7 @@ class View{
 
 
   }
+  
   void updateScore(int score) {
     scoreEL.setInnerHtml("$score");
   }
