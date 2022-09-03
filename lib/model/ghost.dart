@@ -2,26 +2,34 @@ part of pacmann;
 //https://gameinternals.com/understanding-pac-man-ghost-behavior#:~:text=Ghost%20Movement%20Modes%20The%20ghosts%20are%20always%20in,that%20they%20spend%20most%20of%20their%20time%20in.
 //https://dev.to/code2bits/pac-man-patterns--ghost-movement-strategy-pattern-1k1a#:~:text=Ghost%20%E2%80%94%20The%20Ghost%20class%20contains%20the%20different,during%20the%20chase%20mode%20of%20the%20Pac-Man%20game.
 class Ghost {
-
+  // used for the x position
   int x;
+  // used for the y position
   int y;
+  // can have a postive or negative value and determines if the ghost moves to right or left
   int velx;
+  // can have a postive or negative value and determines if the ghost moves to top or bottom
   int vely;
+  // used for the radius
   int radius;
+  // used to save the pervious collisions of a ghost 
   List<String> prevCollisions;
+  // used for the speed
   int speed;
+  // used to determine if the ghost is vulnerable and used in view to make the ghosts background blue   
   bool scared;
+  // used in view to make the ghosts background white  
   bool scared2;
+  // the direction the ghost is moving in to be used in the view to decide which background to be used for the ghosts's eyes
   String direction;
+  // refrence to the game instance
   Game game;
 
-  // Player player;
-  // List<Boundary> boundaries;
-  // List<int> startpos = [];
-  
-  // int change = 0;
+  // used in the View to determine which background should be used for the ghost 
   int backgroundimg = 0;
+  // used to make sure the ghost doesnt move when he is ghost house 
   bool inGhosthous = true;
+  // make the ghost to move normally 
   bool movenormally = false;
 
 
@@ -44,28 +52,15 @@ class Ghost {
 
   }
 
-  // void draw() {
-  //   // c.beginPath();
-  //   // c.arc(this.x,this.y,this.radius,0,pi*2);
-  //   // c.fillStyle = this.scared ? 'blue' : this.color;
-  //   // c.fill();
-  //   // c.closePath();
-  // }
 
+// update the x and y positions by adding the velocties to them 
   void update() {
- 
-    // this.draw();
     this.x += this.velx;
     this.y += this.vely; 
-
-    // ghostbody.style.left = '${x -4}px';
-    // ghostbody.style.top = '${y - 4}px';
-        
-    // ghosteyes.style.left = '${x - 4 }px';
-    // ghosteyes.style.top = '${y - 4}px';
-
   }
 
+  // finds potential pathways for the ghost to move in by moving the ghost in every direction and then checking if it will be collide 
+  // with a Boundary   
   List<String> findPathways() {
     List<String> collisions = [];
     List<String> pathways = [];
@@ -120,10 +115,12 @@ class Ghost {
     return pathways;
   }
 
+// choices a direction from the pathways passed into the methode 
   String chooseDirection(List<String> pathways) {
     return '';
   }
 
+// sets all the needed parameters to make the ghost move in the choosen direction
   void moveGhost() {
     List<String> pathways = findPathways();
     if (pathways.length > 0) {
@@ -158,62 +155,7 @@ class Ghost {
     
     
   }
-  // void drawBlueGhost() {
-  //   // if (scared && !scared2) {
-      
-      
-    
-  //   //   if(n == 1) {
-  //   //     ghostbody.style.background = 'url(img/ghosts/scared/scared_1.png)';
-  //   //     this.n = 2;
-  //   //   } else {
-  //   //     ghostbody.style.background = 'url(img/ghosts/scared/scared_2.png)';
-  //   //     this.n = 1;
-  //   //   }
-    
-        
-  //   // }
-
-  // }
-
-
-  // void drawWhiteGhost() {
-  //   // if (scared && scared2) {
-  //   //   if(n == 1) {
-  //   //     ghostbody.style.background = 'url(img/ghosts/scared/scared_3.png)';
-  //   //     this.n = 2;
-  //   //   } else {
-  //   //     ghostbody.style.background = 'url(img/ghosts/scared/scared_4.png)';
-  //   //     this.n = 1;
-  //   //   }
-    
-       
-  //   //   }
-    
-
-  // }
-
-  // void drawEyes() {
-  //   // if (!this.scared) {
-  //   //    switch (this.direction) {
-  //   //     case 'right':
-  //   //       ghosteyes.style.background = 'url(img/ghosts/eyes_r.png)';
-  //   //       break;
-  //   //     case 'left':
-  //   //       ghosteyes.style.background = 'url(img/ghosts/eyes_l.png)';
-  //   //       break;
-  //   //     case 'top':
-  //   //       ghosteyes.style.background = 'url(img/ghosts/eyes_u.png)';
-  //   //       break;
-  //   //     case 'bottom':
-  //   //       ghosteyes.style.background = 'url(img/ghosts/eyes_d.png)';
-  //   //       break;
-  //   //     default:
-        
-  //   //   }
-  //   // }
-     
-  // }
+  
 
   void changeModes() {
     this.scared = true;

@@ -1,14 +1,17 @@
 part of pacmann;
 
 class Pinky extends Ghost {
+  // the varaible stores the start positions and velocities to be used when wanting to reset the player when needed
   final  List<int> start = [( Boundary.WIDTH * 9 +  2) as int,(Boundary.HEIGHT * 10 +  2) as int,0,0];
+  // target x position 
   int posx = 0;
+  // target y position
   int posy = 0;
 
   Pinky( int speed,  Game game) 
     : super( ( Boundary.WIDTH * 9 +  2) as int, (Boundary.HEIGHT * 10 +  2) as int, 0, 0,  speed, game);
   
-
+ // this methode is used to find the target x and y positions for the ghost by using the player's x , y Position and velx and vely more about it in the dokumentation
   void findp() {
     List<String> l = [];
 
@@ -118,6 +121,9 @@ class Pinky extends Ghost {
     }
   
   }
+  // // choices a direction from the pathways passed into the methode by checking the distance 
+// between player and the calculated x and y positions than chooses the dircetion that brings the ghost
+// the fastest to the target will be chooosen
   String chooseDirection(List<String> pathways) {
     Random random = new Random();
     String direction;
@@ -165,6 +171,8 @@ class Pinky extends Ghost {
     return direction;
   }
 
+// uses the moveghost methode of class ghost but only if the ghost is outside the ghost house after 500 miliseconds have passed since the 
+// ghost has been in the ghost house it will be brought back to the game
   void moveGhost() {
     if (!inGhosthous && movenormally) {
       super.moveGhost();

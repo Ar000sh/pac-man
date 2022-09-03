@@ -1,20 +1,28 @@
 part of pacmann;
 
 class Player {
-
+  // used for the x position
   int x;
+  // used for the y position
   int y;
+  // can have a postive or negative value and determines if the player moves to right or left
   int velx;
+  // can have a postive or negative value and determines if the player moves to top or bottom
   int vely;
+  // used for the radius 
   int radius;
+  // used for the speed
   int speed;
+  // refrence to the game instance
   Game game;
-  // List<Boundary> boundaries;
-
+  
+  // in these varabile the lasted pressed key is saved
   String lastkey = '';
+  // is used for the keys w a s d the one thats pressed will be set to true 
   List<bool> keys = [false,false,false,false];
+  // is used in the view to determine in which direction the player is moving to set the background accordingly
   String direction= '';
-
+  // the varaible stores the start positions and velocities to be used when wanting to reset the player when needed
   List<int> start = [( Boundary.WIDTH * 9 +  2) as int,(Boundary.HEIGHT * 16 +  2) as int,-5,0];
 
   Player(Game game,int speed) {
@@ -29,7 +37,7 @@ class Player {
   }
 
 
-
+  // update the x and y positions by adding the velocties to them 
   void update() {
     this.x += this.velx;
     this.y += this.vely;
@@ -37,6 +45,7 @@ class Player {
   }
   
 
+  // triggering the listen for the keys w a s d and making sure the update the keys and lastkey varaiables to be used in the movePlayer methode 
   void handleKeyboard() {
 
     document.onKeyDown.listen((event) {
@@ -86,12 +95,11 @@ class Player {
 
  
 
-
+  // this methode is used to move the player based on the keys and lastskey varaibles and wethere the player will collide with a boundary if
+  // he took a specific direction if the player wont collide with boundary when going to that direction the the vely and velx will be set accordingly
+  // so that the player can actually move in that direction otherwise the player will be stoped  by setting the velocities to 0 
   void movePlayer() {
-    // for the movment to work we need to be able to predict whether will be a gab where we can go up
-    // for that to work we need to loop throught the boundaries and maniplate the velocity of the player so
-    // as if it has already taken anther step forward and then check if there is collison there if not than we have succesfuly predicted a path that we can use and we will set the vely to -%
-    // otherwise we know that we wont be able to go up in the next move so to prevent the player from stoping because of the collison detection we just set the vely to 0
+    
     Boundary boundary;
     Player playertemp;
 
@@ -137,9 +145,7 @@ class Player {
         }
       }
     } else if(this.keys[3] && this.lastkey == 'd') {
-      //print("d key was pressed");
-      // move to the right
-      // playertemp = new Playertest(this.x + 2, this.y, this.velx, this.vely, this.radius, this.radians, this.openRate, this.rotation,this.boundaries);      
+     
       for(int i = 0; i < game.boundaries.length; i++) {
         boundary = game.boundaries[i];
         if(rectangleCircleCollision(this.x ,boundary.x,this.y,boundary.y,this.radius,speed,this.vely)) {

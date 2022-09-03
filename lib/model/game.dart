@@ -2,6 +2,7 @@ part of pacmann;
 
 class Game {
 
+  // this is the map 
   final List<List<String>> map = [
   ['<','-','-','-','-','-','-','-','-','5','-','-','-','-','-','-','-','-','>'],
   ['|','*','*','p','*','*','*','*','*','|','*','*','*','*','*','*','*','*','|'],
@@ -26,11 +27,19 @@ class Game {
   ['|','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','p','|'],
   ['0','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','/']
   ];
+
+  // this is where the level number is saved
   int levelnum = 0;
+
+  // the to be created player
   Player player;
+  // the to be created ghosts 
   List<Ghost> ghosts;
+  // the to be created boundaries
   List<Boundary> boundaries = [];
+  // the to be created pellets
   List<Pellet> pellets = [];
+  // the to be created powerups 
   List<PowerUp> powerups = [];
 
   Game() {
@@ -47,83 +56,9 @@ class Game {
 
   }
 
-  // void setnewLevel() {
-    
-  //   levelnum++;
-    
-  //   if (levelnum == 1) {
-      
-  //     ghosts.forEach((ghost) {
-  //       ghost.speed = 2;
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 4;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 3;
-  //       }
-  //     }); 
 
-  //   }
-  //   if (levelnum == 2) {
-  //     ghosts.forEach((ghost) {
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 6;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 5;
-  //       }
-  //     }); 
 
-  //   }
-  //   if (levelnum == 3) {
-  //     ghosts.forEach((ghost) {
-  //       ghost.speed = 4;
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 4;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 3;
-  //       }
-  //     });
-  //   }
-  //   if (levelnum == 4) {
-  //     ghosts.forEach((ghost) {
-  //       ghost.speed = 4;
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 6;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 5;
-  //       }
-  //     }); 
-
-      
-  //   }
-  //   if (levelnum == 5) {
-  //     ghosts.forEach((ghost) {
-  //       ghost.speed = 5;
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 4;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 3;
-  //       }
-  //     });
-  //   }
-  //   if (levelnum == 6) {
-  //     ghosts.forEach((ghost) {
-  //       ghost.speed = 5;
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 6;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 5;
-  //       }
-  //     });
-  //   }
-
-  // }
-
+// this is the methode used to change the Level by setting the ghostspeed and the chancedistance for both Blinky and Clyde
   void changeLevel(int ghostspeed, double blinkydis, double clydedis) {
     ghosts.forEach((ghost) {
       ghost.speed = ghostspeed;
@@ -138,7 +73,7 @@ class Game {
     
 
   }
-
+// this methode is used to reset the player and ghosts to thier start poistions 
   void reset() {
     player.x = player.start[0];
     player.y = player.start[1];
@@ -155,6 +90,7 @@ class Game {
     });
   }
 
+// this methode is used to reset the ghost passed to the methode to its startposition and make sure that the ghost isnt vundrable 
   void ghosteaten(Ghost ghost) {
     ghost.x = ghost.start[0];
     ghost.y = ghost.start[1];
@@ -166,6 +102,8 @@ class Game {
     ghost.scared2 = false;
   }
 
+
+  // this is the Methode used to create all of the boundaries, pellets and powerups with right positions 
   void createMap() {
     
     
@@ -234,15 +172,11 @@ class Game {
             boundaries.add(new Boundary( posx, posy,'wall_mr'));
             break;
 
-    //bbt == block open from the stop
-    //bbb == block open from the bottom
-
           case '5':
             boundaries.add(new Boundary( posx, posy,'wall_mt'));
             break;
         case '*':
         
-  // we need the boundary width and heigth to add half of each for it be in the center when optimizing dont forget to just use the static Boundary.width
             pellets.add(new Pellet(posx + ((Boundary.WIDTH / 2 - 4) as int)  ,posy + ((Boundary.HEIGHT / 2 - 4) as int),8));
             break;
           case 'p':
@@ -262,6 +196,7 @@ class Game {
 
   }
 
+// this methode is used by the controller to recreate pellets and powerups
   void createPelletsandPowerUps() {
     int posx;
     int posy = 0;
@@ -284,7 +219,6 @@ class Game {
         switch (item) {
          
           case '*':
-  // we need the boundary width and heigth to add half of each for it be in the center when optimizing dont forget to just use the static Boundary.width
             pellets.add(new Pellet(posx + ((Boundary.WIDTH / 2 - 4) as int)  ,posy + ((Boundary.HEIGHT / 2 - 4) as int),8));
             break;
           case 'p':

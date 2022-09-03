@@ -35,8 +35,10 @@ double hypot(int num1, int num2) {
     return sqrt(pow(num1,2) + pow(num2,2));
 }
 
-
+// checks if two lists are equal
 Function eq = const ListEquality().equals;
+
+// findes the minimum value from a list 
 double findmin(List<double> values) {
   double minimum = double.maxFinite;
   for(double value in values) {
@@ -45,7 +47,7 @@ double findmin(List<double> values) {
   return minimum;
 }
 
-
+// collisiin detection for pellets and player 
 bool circleCircleCollision(Pellet circle1, Player circle2) {
     return (hypot(circle1.x - circle2.x,circle1.y - circle2.y) < (circle1.radius + circle2.radius ));
 
@@ -54,7 +56,7 @@ bool circleCircleCollision(Pellet circle1, Player circle2) {
 
 
 
-
+// collison detection for boundary and ghost or player 
 bool rectangleCircleCollision(int x1, int x2, int y1, int y2, int radius, int velx, int vely) {
     int padding = ((Boundary.WIDTH / 2) as int) - radius - 1 ;
     return ((y1 + 8) - radius + vely <= y2 + Boundary.HEIGHT  + padding &&

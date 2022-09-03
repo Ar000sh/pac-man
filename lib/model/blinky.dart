@@ -1,7 +1,9 @@
 part of pacmann;
 
 class Blinky extends Ghost {
+  // the varaible stores the start positions and velocities to be used when wanting to reset the player when needed
   final  List<int> start = [( Boundary.WIDTH * 9 +  2) as int,(Boundary.HEIGHT * 8 +  2) as int,0,0];
+  // used in chooseDirection methode to see if the distance between the ghost and the player is small enough to start chasing the player 
   double chasedistance;
  
   Blinky(int speed, Game game, double chasedistance) : super( ( Boundary.WIDTH * 9 +  2) as int, (Boundary.HEIGHT * 8 +  2) as int, 0, 0,  speed,game) {
@@ -14,7 +16,9 @@ class Blinky extends Ghost {
   
 
 
-  
+// // choices a direction from the pathways passed into the methode by checking the distance 
+// between player and ghost and if it is smaller than chasedistance the dircetion that brings the ghost
+// the fastest to the player will be chooosen
   String chooseDirection(List<String> pathways) {
     Random random = new Random();
     String direction;
@@ -53,6 +57,8 @@ class Blinky extends Ghost {
     }
     return direction;
   }
+  
+  // uses the moveghost methode of class ghost but only if the ghost is outside the ghost house 
 
   void moveGhost() {
     if (!inGhosthous && movenormally) {

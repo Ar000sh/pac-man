@@ -4,18 +4,21 @@ part of pacmann;
 class Controller {
 
 
-  // Map map;
-  // Player player;
-  // List<Ghost> ghosts;
+   
+  //the to be controlled model. 
   Game game;
+  // the to be controlled view 
   View view;
-  // int levelnum = 0;
+  // this variable is for the highscore 
   int currentHighscore = 0;
 
-
+  // this variable is for the score 
   int score = 0;
+  // used to stop the gameloop 
   bool turnoff = false;
+  // used to determine whether a game is over 
   bool gameOver = true;
+  // used to decised whether code in the gameLoop can be runrun 
   bool startGame = false;
   
 
@@ -23,21 +26,7 @@ class Controller {
   Controller() {
 
     game = Game();
-    
-    
-    // this.map = new Map();
-    // this.map.createMap();
-    
-    
     game.levelnum = 1;
-    // this.player = new Player(this.map.boundaries,5);
-    // this.ghosts = [
-    //     new Blinky(2, this.player,this.map.boundaries,(Boundary.WIDTH * 4).toDouble()),
-    //     new Pinky( 2, this.player,this.map.boundaries),
-    //     new Clyde( 2, this.player,this.map.boundaries,(Boundary.WIDTH * 3).toDouble())
-    //   ];
-    // this.ghosts.add(new Inky( 2, this.player,this.map.boundaries,ghosts[0]));
-    
     this.view = new View();
      view.startButton.onClick.listen((_) {
       if (gameOver) {
@@ -62,105 +51,15 @@ class Controller {
     view.createGhosts(game);
     view.createLives();
     
-
-
-
-    
   }
-  // void reset() {
-  //   player.x = player.start[0];
-  //   player.y = player.start[1];
-  //   player.velx = player.start[2];
-  //   player.vely = player.start[3];
-  //   ghosts.forEach((ghost) { 
-  //     ghost.x = ghost.start[0];
-  //     ghost.y = ghost.start[1];
-  //     ghost.velx = ghost.start[2];
-  //     ghost.vely = ghost.start[3];
-  //     ghost.inGhosthous = true;
-  //     ghost.movenormally = false;
 
-  //   });
-  // }
-  // void changeLevel() {
-    
-  //   levelnum++;
-  //   view.updateLevel(levelnum);
-  //   if (levelnum == 1) {
-      
-  //     ghosts.forEach((ghost) {
-  //       ghost.speed = 2;
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 4;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 3;
-  //       }
-  //     }); 
-
-  //   }
-  //   if (levelnum == 2) {
-  //     ghosts.forEach((ghost) {
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 6;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 5;
-  //       }
-  //     }); 
-
-  //   }
-  //   if (levelnum == 3) {
-  //     ghosts.forEach((ghost) {
-  //       ghost.speed = 4;
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 4;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 3;
-  //       }
-  //     });
-  //   }
-  //   if (levelnum == 4) {
-  //     ghosts.forEach((ghost) {
-  //       ghost.speed = 4;
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 6;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 5;
-  //       }
-  //     }); 
-
-      
-  //   }
-  //   if (levelnum == 5) {
-  //     ghosts.forEach((ghost) {
-  //       ghost.speed = 5;
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 4;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 3;
-  //       }
-  //     });
-  //   }
-  //   if (levelnum == 6) {
-  //     ghosts.forEach((ghost) {
-  //       ghost.speed = 5;
-  //       if (ghost is Blinky) {
-  //         ghost.chasedistance = 6;
-  //       }
-  //       if (ghost is Clyde) {
-  //         ghost.chasedistance = 5;
-  //       }
-  //     });
-  //   }
-
-  // }
+  // run the gameloop methode periodicly every 50 milliseconds 
   void start() {
     Timer.periodic(Duration(milliseconds: 50), gameloop,);
   }
+
+// this methode is used to check if the player is colliding with one of the ghosts and react accordingly. depending on whether the ghost that the player 
+//is colliding with is vundrable or not it can either be restted to its staring condition or kill the player 
 
   void ghostPlayerCollision() {
     Ghost ghost;
@@ -177,7 +76,7 @@ class Controller {
     }
   }
 
-
+// this methode is used to determine if the player is colliding with a Powerup and delete and triggerst the ghosts changeModes methode that makes ghost vundrable
   void playerPowerupCollision(PowerUp powerUp, Player player, int index) {
     if (hypot(powerUp.x - player.x,powerUp.y - player.y) < powerUp.radius + player.radius) {
       view.deletePowerup(index);
@@ -190,12 +89,14 @@ class Controller {
 
   }
 
-
+// get the highscore 
 Future<void> getHighscore() async {
     var response = await http.get(Uri.parse('http://127.0.0.1:5000/highscore'));
     currentHighscore = int.parse(response.body);
     view.setHighscore(response.body);
 }
+// sets a new Highscore 
+
 Future<void> setaNewHighscore(int highscore) async {
   if (highscore > currentHighscore) {
     var response1 = await http.post(
@@ -212,18 +113,9 @@ Future<void> setaNewHighscore(int highscore) async {
   await getHighscore();
 }
 
-  // void ghosteaten(Ghost ghost) {
-  //   ghost.x = ghost.start[0];
-  //   ghost.y = ghost.start[1];
-  //   ghost.velx = ghost.start[2];
-  //   ghost.vely = ghost.start[3];
-  //   ghost.inGhosthous = true;
-  //   ghost.movenormally = false;
-  //   ghost.scared = false;
-  //   ghost.scared2 = false;
-  // }
 
 
+// in this methode is the code the control the game 
   void gameloop(Timer timer) {
     if (startGame) {
       game.boundaries.forEach((boundary) {
@@ -315,13 +207,16 @@ Future<void> setaNewHighscore(int highscore) async {
     }
   }
 
-    void _loadLevel() async {
+// this is the methode used get the parameters of a Level from its corresponding json file und the change the Level by calling the Game's changeLevel function
+  void _loadLevel() async {
     var response = await http.get(Uri.http(window.location.host, "/levels/Level${game.levelnum}.json"));
     var parameters = jsonDecode(response.body);
     game.changeLevel(parameters["ghostspeed"] as int, parameters["blinky"] as double, parameters["clyde"] as double);
     
   }
 
+
+  // the is the methode is called we the game is over and is used to set all the necessary parameters to be able to restart the game  
   void createNewGame() {
     gameOver = true;
     startGame = false;

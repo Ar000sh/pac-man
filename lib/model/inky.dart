@@ -1,10 +1,13 @@
 part of pacmann;
 
 class Inky extends Ghost {
-  
+  // the varaible stores the start positions and velocities to be used when wanting to reset the player when needed
   final List<int> start = [( Boundary.WIDTH * 8 +  2) as int,(Boundary.HEIGHT * 10 +  2) as int,0,0];
+  // refrence to the blinky ghost whci will be used for choosing direction for ghost
   Ghost blinky;
+  // target x position
   int posx = 0;
+  // target y position
   int posy = 0;
 
   
@@ -13,17 +16,8 @@ class Inky extends Ghost {
       this.blinky = blinky;
     }
 
-  // void drawBlueGhost() {
-  //   super.drawBlueGhost();
-  // }
-  // void drawWhiteGhost() {
-  //   super.drawWhiteGhost();
-  // }
-  // void drawEyes() {
-  //   super.drawEyes();
-     
-  // }
 
+ // this methode is used to find the target x and y positions for the ghost by using both blinky's and the Player's position more about it in the dokumentation
   void findnextMove() {
     int playerx = 0;
     int playery = 0;
@@ -57,16 +51,11 @@ class Inky extends Ghost {
 
 
 
-  // void update() {
-  //   super.update();
-  // }
-
-  // List<String> findPathways() {
-  //   return super.findPathways();
-  // }
 
   
-
+// // choices a direction from the pathways passed into the methode by checking the distance 
+// between player and the calculated x and y positions than chooses the dircetion that brings the ghost
+// the fastest to the target will be chooosen
   String chooseDirection(List<String> pathways) {
     Random random = new Random();
     String direction;
@@ -116,7 +105,8 @@ class Inky extends Ghost {
     return direction;
   }
 
-
+// uses the moveghost methode of class ghost but only if the ghost is outside the ghost house after 2 seconds have passed since the 
+// ghost has been in the ghost house it will be brought back to the game
   void moveGhost() {
       if (!inGhosthous && movenormally) {
       super.moveGhost();
