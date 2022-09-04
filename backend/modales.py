@@ -41,6 +41,7 @@ def get_highscores():
     return jsonify(({'Highscore': [m.to_json() for m in data]}))
 
 
+
 # get the highscore by the heights highscore in the table 
 
 @app.route('/highscore', methods=['GET','POST'])
